@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Contracts from './views/Contracts'
+import Invoices from './views/Invoices'
 
 Vue.use(Router)
 
@@ -41,6 +42,22 @@ export default new Router({
           props: true
         },
       ],
+    },
+    {
+      path: '/invoices',
+      component: Invoices,
+      children: [
+        {
+          path: '',
+          name:'invoices-list',
+          component: () => import('./views/InvoicesList.vue')
+        },
+        {
+          path: '/new/invoice',
+          name: 'new-invoice',
+          component: () => import('./views/InvoicesForm')
+        },
+      ]
     }
   ]
 })
