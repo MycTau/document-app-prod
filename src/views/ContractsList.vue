@@ -23,15 +23,15 @@
                 <td>{{contract.number}}</td>
                 <td>{{contract.date}}</td>
                 <td></td>
-                <td></td>
+                <td>{{contractTypeName(contract.type_id)}}</td>
                 <td>{{contract.amount}}</td>
                 <td></td>
                 <td><span class="label label-info label-mini"></span></td>
                 <td>
-                    <router-link to="#">
+                    <router-link :to="{name: 'edit-contract', params: {id:contract.id}}">
                         <button class="btn btn-default">Изменить</button>
                     </router-link>
-                    <router-link to="#">
+                    <router-link :to="{name: 'delete-contract', params: {id: contract.id}}">
                         <button class="btn btn-primary">Удалить</button>
                     </router-link>
                 </td>
@@ -43,7 +43,19 @@
 
 <script>
     export default {
-        name: "ContractsList"
+        name: "ContractsList",
+        methods: {
+            contractTypeName: function (type_id) {
+                var name = this.$store.state.types.find(function (el) {
+                    return el.id === type_id;
+                });
+                if (name){
+                    return name.full_name
+                } else {
+                    return 'Тип договора не указан!'
+                }
+            }
+        }
     }
 </script>
 

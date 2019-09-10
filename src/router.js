@@ -27,7 +27,19 @@ export default new Router({
           path: '/new/contract',
           name: 'new-contract',
           component: () => import('./views/ContractsForm')
-        }
+        },
+        {
+          path: ':id/edit',
+          name: 'edit-contract',
+          component: () => import('./views/ContractsForm'),
+          props: true
+        },
+        {
+          path: ':id/delete',
+          name: 'delete-contract',
+          component: () => import('./views/ContractsDelete'),
+          props: true
+        },
       ],
     }
   ]

@@ -25,9 +25,34 @@
     export default {
         name: "ContractsForm",
         props: ['id'],
+        data: function (){
+            return {
+                number: null,
+                amount: null,
+                date: null,
+                type_id: null
+            }
+        },
+        created: function () {
+            this.fillForm()
+        },
+        watch: {
+            id: function () {
+                this.fillForm()
+            }
+        },
         methods: {
             submitFormContractClicked: function () {
                 this.$emit('contract-form-submited',{id: this.id, number: this.number, date: this.date, type_id: this.type_id, amount: this.amount})
+            },
+            fillForm: function () {
+                var contract = this.$store.getters.contract(this.id);
+                if (contract) {
+                    this.number = contract.number;
+                    this.date = contract.date;
+                    this.type_id = contract.type_id;
+                    this.amount = contract.amount;
+                }
             }
         }
     }

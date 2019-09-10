@@ -6,9 +6,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     contracts: [
-      {id: 1, number: '123к-23', date: '10.12.2017', type_id: 1, amount: '1 200 000'},
-      {id: 2, number: 'А-548', date: '10.08.2016', type_id: 2, amount: '1 000 000'},
-      {id: 3, number: '845-ЗК', date: '10.01.2019', type_id: 3, amount: '1 290 000'}
+      {id: 1, number: '123к-23', date: '10.12.2017', type_id: 1, amount: '1200000'},
+      {id: 2, number: 'А-548', date: '10.08.2016', type_id: 2, amount: '1000000'},
+      {id: 3, number: '845-ЗК', date: '10.01.2019', type_id: 3, amount: '1290000'}
     ],
     types: [
       {id: 1, name: 'transport-expedition', full_name: 'Транспортно-экспедиционное обслуживание'},
@@ -17,11 +17,30 @@ export default new Vuex.Store({
     ],
 
   },
+  getters: {
+    contract: state => id => {
+      return state.contracts.find(c => c.id == id)
+    },
+  },
   mutations: {
     createContract: function (state, contract) {
       var maxId = Math.max.apply(Math, state.contracts.map(c => c.id));
       contract.id = maxId + 1;
       state.contracts.push(contract)
+    },
+    updateContract: function (state, contract) {
+      var index = state.contracts.findIndex(function (el) {
+        return el.id === contract.id
+      });
+      if (index >= 0) {
+        state.contracts.splice(index, 1, contract);
+      }
+    },
+    deleteContract: function (state, contract) {
+      var index = state.contracts.findIndex(el => el.id === contract.id);
+      if (index >= 0) {
+        state.contracts.splice(index, 1);
+      }
     },
   },
   actions: {
