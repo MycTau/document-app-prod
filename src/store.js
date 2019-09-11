@@ -6,9 +6,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     contracts: [
-      {id: 1, number: '123к-23', date: '10.12.2017', type_id: 1, amount: '1200000'},
-      {id: 2, number: 'А-548', date: '10.08.2016', type_id: 2, amount: '1000000'},
-      {id: 3, number: '845-ЗК', date: '10.01.2019', type_id: 3, amount: '1290000'}
+      {id: 1, number: '№ 123к-23', date: '10.12.2017', type_id: 1, amount: '1200000'},
+      {id: 2, number: '№ А-548', date: '10.08.2016', type_id: 2, amount: '1000000'},
+      {id: 3, number: '№ 845-ЗК', date: '10.01.2019', type_id: 3, amount: '1290000'}
     ],
     types: [
       {id: 1, name: 'transport-expedition', full_name: 'Транспортно-экспедиционное обслуживание'},
@@ -16,16 +16,27 @@ export default new Vuex.Store({
       {id: 3, name: 'warehouse', full_name: 'Складские услуги'}
     ],
     invoices: [
-      {id:1, date: '30.03.2018', sum: '565000', contract_id: 1, status_id: 1 },
-      {id:2, date: '30.04.2018', sum: '245000', contract_id: 1, status_id: 1 },
-      {id:3, date: '30.12.2016', sum: '1000000', contract_id: 2, status_id: 1 },
-      {id:4, date: '30.05.2019', sum: '1000000', contract_id: 3, status_id: 2 }
+      {id:1, date: '30.03.2018', number: '№ 124', sum: '565000', contract_id: 1, status_id: 1 },
+      {id:2, date: '30.04.2018', number: '№ 29', sum: '245000', contract_id: 1, status_id: 1 },
+      {id:3, date: '30.12.2016', number: '№ 37', sum: '1000000', contract_id: 2, status_id: 1 },
+      {id:4, date: '30.05.2019', number: '№ 4', sum: '1000000', contract_id: 3, status_id: 2 }
     ],
     statuses: [
       {id:1, name: 'paid', full_name: 'Оплачен' },
       {id:2, name: 'unpaid', full_name: 'Не оплачен' }
+    ],
+    acts: [
+      {id:1, date: '20.03.2018', number: '№ 1-K', invoice_id: 1, sum: '565000', state_id: 1},
+      {id:2, date: '20.04.2018',number: '№ 11-T', invoice_id: 2, sum: '245000', state_id: 1},
+      {id:3, date: '10.12.2016',number: '№ 22-12-A', invoice_id: 3, sum: '600000', state_id: 1},
+      {id:4, date: '20.12.2016',number: '№ 28-03-B', invoice_id: 3, sum: '400000', state_id: 1},
+      {id:5, date: '10.05.2019',number: '№ M-15', invoice_id: 4, sum: '750000', state_id: 2},
+      {id:6, date: '20.05.2019',number: '№ H-22', invoice_id: 4, sum: '250000', state_id: 1}
+    ],
+    states: [
+      {id: 1, name: 'signed', full_name: 'Подписан'},
+      {id: 2, name: 'unsigned', full_name: 'Не подписан'}
     ]
-
   },
   getters: {
     contract: state => id => {
@@ -33,6 +44,9 @@ export default new Vuex.Store({
     },
     invoice: state => id => {
       return state.invoices.find(c => c.id == id)
+    },
+    act: state => id => {
+      return state.acts.find(c => c.id == id)
     },
   },
   mutations: {
@@ -74,6 +88,11 @@ export default new Vuex.Store({
         state.invoices.splice(index, 1);
       }
     },
+    createAct: function (state, act) {
+      var maxId = Math.max.apply(Math, state.acts.map(c => c.id));
+      act.id = maxId + 1;
+      state.acts.push(act)
+    }
   },
   actions: {
 

@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Contracts from './views/Contracts'
 import Invoices from './views/Invoices'
+import Acts from './views/Acts'
+
 
 Vue.use(Router)
 
@@ -69,7 +71,23 @@ export default new Router({
           component: () => import('./views/InvoicesDelete'),
           props: true
         }
-      ]
+      ],
+    },
+    {
+      path: '/acts',
+      component: Acts,
+      children: [
+        {
+          path: '',
+          name: 'acts-list',
+          component: () => import('./views/ActsList.vue')
+        },
+        {
+          path: '/new/act',
+          name: 'new-act',
+          component: () => import('./views/ActsForm')
+        },
+      ],
     }
   ]
 })

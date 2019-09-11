@@ -6,9 +6,9 @@
         <label>Сумма счета</label>
         <input class="form-control" type="text" v-model="sum">
         <br>
-        <label>Выберете договор</label>
+        <label>Выберите договор</label>
         <select class="form-control mb-10" v-model="contract_id">
-            <option v-for="contract in $store.state.contracts" v-bind:value="contract.id">{{`Договор № ${contract.number} от ${contract.date}`}}</option>
+            <option v-for="contract in $store.state.contracts" v-bind:value="contract.id">{{`Договор ${contract.number} от ${contract.date}`}}</option>
         </select>
         <br>
         <label>Статус оплаты</label>
@@ -61,5 +61,7 @@
 </script>
 
 <style scoped>
-
+    .btn {
+        margin: 5px;
+    }
 </style>

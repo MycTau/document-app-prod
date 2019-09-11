@@ -9,6 +9,7 @@
         <thead>
         <tr>
             <th>Дата</th>
+            <th>Номер счета</th>
             <th>Сумма счета</th>
             <th>Договор</th>
             <th>Статус оплаты</th>
@@ -18,8 +19,9 @@
         <tbody>
         <tr v-for="invoice in $store.state.invoices"><!-- подключаем отображение массива счетов-->
             <td>{{invoice.date}}</td>
+            <td>{{invoice.number}}</td>
             <td>{{invoice.sum}}</td>
-            <td>{{`№ ${invoiceContractName(invoice.contract_id)} от ${invoiceContractDate(invoice.contract_id)} `}}</td>
+            <td>{{` ${invoiceContractName(invoice.contract_id)} от ${invoiceContractDate(invoice.contract_id)} `}}</td>
             <td><span class="label label-info label-mini">{{invoiceStatusName(invoice.status_id)}}</span></td>
             <td>
                 <router-link :to="{name: 'edit-invoice', params: {id:invoice.id}}">
