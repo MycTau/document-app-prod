@@ -22,10 +22,10 @@
             <td>{{`№ ${invoiceContractName(invoice.contract_id)} от ${invoiceContractDate(invoice.contract_id)} `}}</td>
             <td><span class="label label-info label-mini">{{invoiceStatusName(invoice.status_id)}}</span></td>
             <td>
-                <router-link to="#">
+                <router-link :to="{name: 'edit-invoice', params: {id:invoice.id}}">
                     <button class="btn btn-default">Изменить</button>
                 </router-link>
-                <router-link to="#">
+                <router-link :to="{name: 'delete-invoice', params: {id:invoice.id}}">
                     <button class="btn btn-primary">Удалить</button>
                 </router-link>
             </td>
@@ -46,7 +46,7 @@
                 if (name) {
                     return name.number
                 } else {
-                    return "'Тип договора не указан!'"
+                    return "'Договор не выбран!'"
                 }
             },
             invoiceContractDate: function (contract_id) {
@@ -68,7 +68,7 @@
                 } else {
                     return 'Статус оплаты не выбран!'
                 }
-            }
+            },
         }
     }
 </script>

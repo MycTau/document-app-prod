@@ -35,11 +35,28 @@
                 status_id: null
             }
         },
+        created: function () {
+            this.fillForm()
+        },
+        watch: {
+            id: function () {
+                this.fillForm()
+            }
+        },
         methods: {
             submitFormInvoiceClicked: function () {
                 this.$emit('invoice-form-submited',{id: this.id, date: this.date, sum: this.sum, contract_id: this.contract_id, status_id: this.status_id})
             },
-        },
+            fillForm: function () {
+                var invoice = this.$store.getters.invoice(this.id);
+                if (invoice) {
+                    this.date = invoice.date;
+                    this.sum = invoice.sum;
+                    this.contract_id = invoice.contract_id;
+                    this.status_id = invoice.status_id;
+                }
+            },
+        }
     }
 </script>
 

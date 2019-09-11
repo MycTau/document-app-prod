@@ -68,6 +68,12 @@ export default new Vuex.Store({
         state.invoices.splice(index, 1, invoice);
       }
     },
+    deleteInvoice: function (state, invoice) {
+      var index = state.invoices.findIndex(el => el.id === invoice.id);
+      if (index >= 0) {
+        state.invoices.splice(index, 1);
+      }
+    },
   },
   actions: {
 

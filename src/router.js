@@ -57,6 +57,18 @@ export default new Router({
           name: 'new-invoice',
           component: () => import('./views/InvoicesForm')
         },
+        {
+          path: ':id/edit',
+          name: 'edit-invoice',
+          component: () => import('./views/InvoicesForm'),
+          props: true
+        },
+        {
+          path: ':id/delete',
+          name: 'delete-invoice',
+          component: () => import('./views/InvoicesDelete'),
+          props: true
+        }
       ]
     }
   ]
