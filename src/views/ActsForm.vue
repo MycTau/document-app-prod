@@ -1,18 +1,18 @@
 <template>
-    <div>
+    <div class="table__form">
         <label>Дата акта</label>
-        <input class="form-control" placeholder="" type="text" v-model="date">
+        <input class="form-control" placeholder="dd.mm.yyyy" type="text" v-model="date">
         <br>
         <label>Выберите счет</label>
-        <select class="form-control mb-10" v-model="invoice_id">
+        <select class="form-control mb-10 select__style" v-model="invoice_id">
             <option v-for="invoice in $store.state.invoices" v-bind:value="invoice.id">{{`Счёт ${invoice.number} от ${invoice.date}`}}</option>
         </select>
         <br>
         <label>Сумма акта</label>
-        <input class="form-control" placeholder="" type="text" v-model="sum">
+        <input class="form-control" placeholder="Укажите сумму акта" type="text" v-model="sum">
         <br>
         <label>Статус оплаты</label>
-        <select class="form-control mb-10" v-model="state_id">
+        <select class="form-control mb-10 select__style" v-model="state_id">
             <option v-for="state in $store.state.states" v-bind:value="state.id">{{state.full_name}}</option>
         </select>
         <br>
@@ -64,5 +64,20 @@
 <style scoped>
     .btn {
         margin: 5px;
+    }
+    .table__form {
+        padding: 35px;
+        width: 350px;
+        margin: 0 auto;
+        text-align: center;
+        border: 5px solid yellowgreen;
+        border-radius: 25px;
+        background: lightgoldenrodyellow;
+    }
+    .form-control {
+        text-align: center;
+    }
+    .select__style {
+        text-align-last: center;
     }
 </style>

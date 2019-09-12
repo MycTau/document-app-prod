@@ -1,18 +1,18 @@
 <template>
-    <div>
+    <div class="table__form">
         <label>Номер договора</label>
-        <input class="form-control" placeholder="" type="text" v-model="number">
+        <input class="form-control" placeholder="Укажите номер договора" type="text" v-model="number">
         <br>
         <label>Дата договора</label>
-        <input class="form-control" type="text" v-model="date">
+        <input class="form-control" placeholder="dd.mm.yyyy" type="text" v-model="date">
         <br>
         <label>Тип договора</label>
-        <select class="form-control mb-10" v-model="type_id">
+        <select class="form-control mb-10 select__style" v-model="type_id">
             <option v-for="type in $store.state.types" v-bind:value="type.id">{{type.full_name}}</option>
         </select>
         <br>
         <label>Сумма договора</label>
-        <input class="form-control" placeholder="" type="number" v-model="amount">
+        <input class="form-control" placeholder="Укажите сумму договора" type="number" v-model="amount">
         <br>
 
         <button v-on:click="submitFormContractClicked" class="btn btn-danger">Сохранить</button>
@@ -61,5 +61,20 @@
 <style scoped>
     .btn {
         margin: 5px;
+    }
+    .table__form {
+        padding: 35px;
+        width: 350px;
+        margin: 0 auto;
+        text-align: center;
+        border: 5px solid yellowgreen;
+        border-radius: 25px;
+        background: lightgoldenrodyellow;
+    }
+    .form-control {
+        text-align: center;
+    }
+    .select__style {
+        text-align-last: center;
     }
 </style>

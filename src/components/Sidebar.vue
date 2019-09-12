@@ -2,7 +2,7 @@
     <aside id="aside" class="ui-aside">
         <ul class="nav" ui-nav>
             <li>
-                <router-link to="/contracts"><i class="fa fa-file-text-o"></i><span>Договора</span></router-link>
+                <router-link to="/contracts"><i class="fa fa-file-text-o"></i><span>Договоры</span></router-link>
             </li>
             <li>
                 <router-link to="/invoices" href="font-awesome.html"><i class="fa fa-font-awesome"></i><span>Счета</span></router-link>

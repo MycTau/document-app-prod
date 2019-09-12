@@ -3,7 +3,7 @@
         <div class="ui-content-body">
 
             <div class="ui-container">
-                <h2>{{this.$route.name}}</h2>
+                <h2 class="section__name" >{{Name}}</h2>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel">
@@ -187,10 +187,47 @@
 
 <script>
     export default {
-        name: "Body"
+        name: "Body",
+        computed: {
+            Name: function () {
+                switch (this.$route.name) {
+                    case 'contracts-list':
+                        return 'Список договоров:';
+                    case 'new-contract':
+                        return 'Создание нового договора:';
+                    case 'edit-contract':
+                        return 'Редактирование договора:';
+                    case 'delete-contract':
+                        return 'Удаление договора:';
+                    case 'invoices-list':
+                        return 'Список счетов:';
+                    case 'new-invoice':
+                        return 'Создание нового счёта:';
+                    case 'edit-invoice':
+                        return 'Редактирование счёта:';
+                    case 'delete-invoice':
+                        return 'Удаление счёта:';
+                    case 'acts-list':
+                        return 'Список актов:';
+                    case 'new-act':
+                        return 'Создание нового акта:';
+                    case 'edit-act':
+                        return 'Редактирование акта:';
+                    case 'delete-act':
+                        return 'Удаление акта:';
+                    case 'dashboard':
+                        return 'Статистика договоров:'
+
+                    default:
+                        return this.$route.name
+                }
+            }
+        }
     }
 </script>
 
 <style scoped>
-
+    .section__name {
+        text-align: center;
+    }
 </style>

@@ -1,21 +1,21 @@
 <template>
-    <div>
+    <div class="table__form">
         <label>Дата счета</label>
-        <input class="form-control" placeholder="" type="text" v-model="date">
+        <input class="form-control" placeholder="dd.mm.yyyy" type="text" v-model="date">
         <br>
         <label>Сумма счета</label>
-        <input class="form-control" type="text" v-model="sum">
+        <input class="form-control" placeholder="Укажите сумму счета" type="text" v-model="sum">
         <br>
         <label>Номер счета</label>
-        <input class="form-control" type="text" v-model="number">
+        <input class="form-control" type="text" placeholder="Укажите номер счета" v-model="number">
         <br>
         <label>Выберите договор</label>
-        <select class="form-control mb-10" v-model="contract_id">
+        <select class="form-control mb-10 select__style" v-model="contract_id">
             <option v-for="contract in $store.state.contracts" v-bind:value="contract.id">{{`Договор ${contract.number} от ${contract.date}`}}</option>
         </select>
         <br>
         <label>Статус оплаты</label>
-        <select class="form-control mb-10" v-model="status_id">
+        <select class="form-control mb-10 select__style" v-model="status_id">
             <option v-for="status in $store.state.statuses" v-bind:value="status.id">{{status.full_name}}</option>
         </select>
         <br>
@@ -69,4 +69,20 @@
     .btn {
         margin: 5px;
     }
+    .table__form {
+        padding: 35px;
+        width: 350px;
+        margin: 0 auto;
+        text-align: center;
+        border: 5px solid yellowgreen;
+        border-radius: 25px;
+        background: lightgoldenrodyellow;
+    }
+    .form-control {
+        text-align: center;
+    }
+    .select__style {
+        text-align-last: center;
+    }
+
 </style>
