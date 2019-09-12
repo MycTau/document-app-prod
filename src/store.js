@@ -92,7 +92,21 @@ export default new Vuex.Store({
       var maxId = Math.max.apply(Math, state.acts.map(c => c.id));
       act.id = maxId + 1;
       state.acts.push(act)
-    }
+    },
+    updateAct: function (state, act) {
+      var index = state.acts.findIndex(function (el) {
+        return el.id === act.id
+      });
+      if (index >= 0) {
+        state.acts.splice(index, 1, act);
+      }
+    },
+    deleteAct: function (state, act) {
+      var index = state.acts.findIndex(el => el.id === act.id);
+      if (index >= 0) {
+        state.acts.splice(index, 1);
+      }
+    },
   },
   actions: {
 

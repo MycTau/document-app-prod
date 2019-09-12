@@ -87,6 +87,18 @@ export default new Router({
           name: 'new-act',
           component: () => import('./views/ActsForm')
         },
+        {
+          path: ':id/delete',
+          name: 'delete-act',
+          component: () => import('./views/ActsDelete'),
+          props: true
+        },
+        {
+          path: ':id/edit',
+          name: 'edit-act',
+          component: () => import('./views/ActsForm'),
+          props: true
+        },
       ],
     }
   ]

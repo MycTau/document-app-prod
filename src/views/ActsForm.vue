@@ -26,6 +26,7 @@
 <script>
     export default {
         name: "ActsForm",
+        props: ['id'],
         data: function (){
             return {
                 date: null,
@@ -35,9 +36,26 @@
                 invoice_id: null
             }
         },
+        created: function () {
+            this.fillForm()
+        },
+        watch: {
+            id: function () {
+                this.fillForm()
+            }
+        },
         methods: {
             submitFormActClicked: function () {
                 this.$emit('act-form-submited',{id: this.id, date: this.date, sum: this.sum, number: this.number, state_id: this.state_id, invoice_id: this.invoice_id})
+            },
+            fillForm: function () {
+                var act = this.$store.getters.act(this.id);
+                if (act) {
+                    this.date = act.date;
+                    this.sum = act.sum;
+                    this.state_id = act.state_id;
+                    this.invoice_id = act.invoice_id;
+                }
             },
         }
     }

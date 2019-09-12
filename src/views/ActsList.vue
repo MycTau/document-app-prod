@@ -22,10 +22,10 @@
             <td>{{act.sum}}</td>
             <td><span class="label label-info label-mini">{{statesStatus(act.state_id)}}</span></td>
             <td>
-                <router-link to="#">
+                <router-link :to="{name: 'edit-act', params: {id:act.id}}">
                     <button class="btn btn-default">Изменить</button>
                 </router-link>
-                <router-link to="#">
+                <router-link :to="{name:'delete-act', params: {id:act.id}}">
                     <button class="btn btn-primary">Удалить</button>
                 </router-link>
             </td>
