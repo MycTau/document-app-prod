@@ -39,6 +39,38 @@ export default new Vuex.Store({
     ]
   },
   getters: {
+    contractInvoices: state => contract_id => {
+      return state.invoices.filter(c => c.contract_id == contract_id)
+    },
+    contractInvoicesPayed: state => contract_id => {
+      return state.invoices.filter(c => c.contract_id == contract_id && c.status_id === 1)
+    },
+    payedSum: (state,getters) => contract_id => {
+      var result = 0;
+      getters.contractInvoicesPayed(contract_id).forEach(el => result += parseInt(el.sum));
+      return result
+    },
+    unpaidContracts: (state, getters) => contract_id =>{
+      return state.contracts.filter(c => c.amount > getters.payedSum(c.id))
+    },
+    contractStatusPayed: (state, getters) => contract_id =>{
+      if (getters.payedSum(contract_id) == getters.contract(contract_id).amount) {
+        return 'Оплачено полностью'
+      } else if (getters.payedSum(contract_id) > getters.contract(contract_id).amount) {
+        return 'Переплата'
+      } else if (getters.payedSum(contract_id) < getters.contract(contract_id).amount && getters.payedSum(contract_id) !== 0) {
+        return 'Частичная оплата'
+      } else {
+        return 'Не оплачен'
+      }
+    },
+    contractStatus: (state, getters) => contract_id =>{
+      if (getters.payedSum(contract_id) == getters.contract(contract_id).amount) {
+        return 'Договор закрыт'
+      } else {
+        return 'Договор не закрыт'
+      }
+    },
     contract: state => id => {
       return state.contracts.find(c => c.id == id)
     },

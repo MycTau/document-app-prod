@@ -14,7 +14,8 @@
                 <th>Тип</th>
                 <th>Сумма договора</th>
                 <th>Оплачено по договору</th>
-                <th>Статус</th>
+                <th>Статус оплаты</th>
+                <th>Статус договора</th>
                 <th>Редактирование</th>
             </tr>
             </thead>
@@ -22,11 +23,12 @@
             <tr v-for="contract in $store.state.contracts"><!-- подключаем отображение массива контрактов-->
                 <td>{{contract.number}}</td>
                 <td>{{contract.date}}</td>
-                <td></td>
+                <td>{{$store.getters.contractInvoices(contract.id).length}}</td>
                 <td>{{contractTypeName(contract.type_id)}}</td>
                 <td>{{contract.amount}}</td>
-                <td></td>
-                <td><span class="label label-info label-mini"></span></td>
+                <td>{{$store.getters.payedSum(contract.id)}}</td>
+                <td><span class="label label-info label-mini">{{$store.getters.contractStatusPayed(contract.id)}}</span></td>
+                <td><span class="label label-info label-mini label-close">{{$store.getters.contractStatus(contract.id)}}</span></td>
                 <td>
                     <router-link :to="{name: 'edit-contract', params: {id:contract.id}}">
                         <button class="btn btn-default">Изменить</button>
@@ -65,5 +67,8 @@
     }
     .btn {
         margin: 5px;
+    }
+    .label-close {
+        background: lightcoral;
     }
 </style>

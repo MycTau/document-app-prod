@@ -6,6 +6,9 @@
         <label>Сумма счета</label>
         <input class="form-control" type="text" v-model="sum">
         <br>
+        <label>Номер счета</label>
+        <input class="form-control" type="text" v-model="number">
+        <br>
         <label>Выберите договор</label>
         <select class="form-control mb-10" v-model="contract_id">
             <option v-for="contract in $store.state.contracts" v-bind:value="contract.id">{{`Договор ${contract.number} от ${contract.date}`}}</option>
@@ -32,7 +35,8 @@
                 date: null,
                 sum: null,
                 contract_id: null,
-                status_id: null
+                status_id: null,
+                number: null
             }
         },
         created: function () {
@@ -45,7 +49,7 @@
         },
         methods: {
             submitFormInvoiceClicked: function () {
-                this.$emit('invoice-form-submited',{id: this.id, date: this.date, sum: this.sum, contract_id: this.contract_id, status_id: this.status_id})
+                this.$emit('invoice-form-submited',{id: this.id, date: this.date, sum: this.sum, contract_id: this.contract_id, status_id: this.status_id, number: this.number})
             },
             fillForm: function () {
                 var invoice = this.$store.getters.invoice(this.id);
@@ -54,6 +58,7 @@
                     this.sum = invoice.sum;
                     this.contract_id = invoice.contract_id;
                     this.status_id = invoice.status_id;
+                    this.number = invoice.number
                 }
             },
         }
