@@ -3,6 +3,7 @@
         <Donut/>
         <br>
         <h3>Количество не закрытых договоров: {{$store.getters.unpaidContracts().length}} - ( {{(($store.getters.unpaidContracts().length/$store.state.contracts.length)*100).toFixed()}}% )</h3>
+        <h3>Количество полностью оплаченных договоров: {{$store.state.contracts.length - $store.getters.unpaidContracts().length}} - ( {{((($store.state.contracts.length - $store.getters.unpaidContracts().length)/$store.state.contracts.length)*100).toFixed()}}% )</h3>
         <h3>Всего договоров в базе: {{$store.state.contracts.length}}</h3>
     </div>
 </template>
