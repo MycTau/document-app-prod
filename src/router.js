@@ -27,7 +27,7 @@ export default new Router({
           component: () => import('./views/ContractsList.vue')
         },
         {
-          path: '/new/contract',
+          path: 'new',
           name: 'new-contract',
           component: () => import('./views/ContractsForm')
         },
@@ -55,7 +55,7 @@ export default new Router({
           component: () => import('./views/InvoicesList.vue')
         },
         {
-          path: '/new/invoice',
+          path: 'new',
           name: 'new-invoice',
           component: () => import('./views/InvoicesForm')
         },
@@ -83,7 +83,7 @@ export default new Router({
           component: () => import('./views/ActsList.vue')
         },
         {
-          path: '/new/act',
+          path: 'new',
           name: 'new-act',
           component: () => import('./views/ActsForm')
         },
