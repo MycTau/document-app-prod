@@ -83,7 +83,7 @@ export default new Router({
           component: () => import('./views/ActsList.vue')
         },
         {
-          path: 'new',
+          path: '',
           name: 'new-act',
           component: () => import('./views/ActsForm')
         },
