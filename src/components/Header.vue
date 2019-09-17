@@ -4,8 +4,8 @@
         <div class="navbar-header">
             <!--logo start-->
             <a href="index.html" class="navbar-brand">
-                <span class="logo"><img src="./../assets/images/logo-dark.png" alt=""/></span>
-                <span class="logo-compact"><img src="./../assets/images/logo-icon-dark.png" alt=""/></span>
+                <span class="logo"><img src="./../assets/img/logo-dark.png" alt=""/></span>
+                <span class="logo-compact"><img src="./../assets/img/logo-icon-dark.png" alt=""/></span>
             </a>
             <!--logo end-->
         </div>
