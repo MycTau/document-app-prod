@@ -26,7 +26,7 @@
                         <li class="online">
                             <div class="media">
                                 <a href="#" class="pull-left media-thumb">
-                                    <img alt="" src="imgs/a0.jpg" class="media-object">
+                                    <img alt="" src="img/a0.jpg" class="media-object">
                                     <span class="online"></span>
                                 </a>
                                 <div class="media-body">
@@ -63,7 +63,7 @@
                         <li class="online">
                             <div class="media">
                                 <a href="#" class="pull-left media-thumb">
-                                    <img alt="" src="imgs/a0.jpg" class="media-object">
+                                    <img alt="" src="img/a0.jpg" class="media-object">
                                     <span class="away"></span>
                                 </a>
                                 <div class="media-body">
@@ -75,7 +75,7 @@
                         <li class="online">
                             <div class="media">
                                 <a href="#" class="pull-left media-thumb">
-                                    <img alt="" src="imgs/a2.jpg" class="media-object">
+                                    <img alt="" src="img/a2.jpg" class="media-object">
                                     <span class="offline"></span>
                                 </a>
                                 <div class="media-body">
